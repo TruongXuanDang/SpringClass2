@@ -1,10 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.springframework.org/schema/data/jaxb"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/main_layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>INDEX</title>
+    <title>User</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 50%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
 </head>
 <body>
-    <h1>INDEX</h1>
+<div layout:fragment="content" class="container">
+    <h1>List User</h1>
+
+    <table>
+        <a href="/add">Add User</a>
+        <tr>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </tr>
+
+        <tr th:if="${lsUser.empty}">
+            <td colspan="2"> No Roles Available </td>
+        </tr>
+        <tr th:each="user : ${lsUser}">
+            <td><span th:text="${user.id}"> ID </span></td>
+            <td><span th:text="${user.username}"> User Name </span></td>
+            <td><span th:text="${user.password}"> Password </span></td>
+            <td><span th:text="${user.phone}"> Phone </span></td>
+            <td>
+                <a th:href="@{/edit?id={id}(id=${user.id})}" >Edit</a>
+                <a th:href="@{/delete?id={id}(id=${user.id})}" >Delete</a>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+
 </body>
 </html>
