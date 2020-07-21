@@ -5,6 +5,7 @@ import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,5 +32,12 @@ public class UserServiceImp implements UserService{
     @Override
     public Optional<User> findUserById(int id) {
         return userRepository.findById(id);
+    }
+
+    @Override
+    public List<User> findByUserNameOrEmail(String username) {
+        List<User> listUser = new ArrayList<User>();
+        listUser.add(userRepository.findByUsername(username));
+        return listUser;
     }
 }

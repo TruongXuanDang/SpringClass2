@@ -10,4 +10,5 @@ public interface UserService {
     public void saveUser(User role);
     public void deleteUser(int id);
     public Optional<User> findUserById(int id);
+    public List<User> findByUserNameOrEmail(String username);
 }

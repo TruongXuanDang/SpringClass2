@@ -20,6 +20,12 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping("/ajax")
+    public String ajax(Model model) {
+
+        return "ajax";
+    }
+
 //    @RequestMapping("/add")
 //    public String addRole(Model model){
 //        model.addAttribute("role",new Role());
