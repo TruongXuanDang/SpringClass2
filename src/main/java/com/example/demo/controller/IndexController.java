@@ -17,7 +17,7 @@ public class IndexController {
     public String index(Model model){
         List<User> lsUser = userService.getAll();
         model.addAttribute("lsUser",lsUser);
-        return "index";
+        return "/landingpage/indexProduct";
     }
 
     @RequestMapping("/ajax")
