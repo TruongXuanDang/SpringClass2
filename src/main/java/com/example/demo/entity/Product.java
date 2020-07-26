@@ -23,6 +23,12 @@ public class Product {
     @Column(name = "pricepermonth")
     private Integer pricepermonth;
 
+    @Column(name = "image")
+    private String image;
+
+    @Column(name = "image2")
+    private String image2;
+
     public Integer getId() {
         return id;
     }
@@ -53,6 +59,22 @@ public class Product {
 
     public void setPricepermonth(Integer pricepermonth) {
         this.pricepermonth = pricepermonth;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getImage2() {
+        return image2;
+    }
+
+    public void setImage2(String image2) {
+        this.image2 = image2;
     }
 
 }

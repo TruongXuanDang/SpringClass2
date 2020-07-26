@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Product;
 import com.example.demo.entity.User;
+import com.example.demo.service.ProductService;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,11 +15,21 @@ import java.util.List;
 public class IndexController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private ProductService productService;
+
     @RequestMapping("/")
     public String index(Model model){
         List<User> lsUser = userService.getAll();
         model.addAttribute("lsUser",lsUser);
         return "/landingpage/indexProduct";
+    }
+
+    @RequestMapping("/user/rooms")
+    public String rooms(Model model){
+        List<Product> lsProduct = productService.getAll();
+        model.addAttribute("lsProduct",lsProduct);
+        return "/landingpage/rooms";
     }
 
     @RequestMapping("/ajax")
